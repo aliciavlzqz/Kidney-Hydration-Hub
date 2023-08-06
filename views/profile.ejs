@@ -1,32 +1,51 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
-          </div>
+    <div class="col-6">
+      <div>
+        <p><strong>User Name</strong>: <%= user.userName %></p>
+        <p><strong>Email</strong>: <%= user.email %></p>
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
       </div>
-      <div class="col-6">
+      <div class="mt-5">
+        <h2>Add your daily fluid limit.</h2>
+        <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Liters</label>
+            <input type="number" class="form-control" id="title" name="title">
+          </div>
+          <h3>I drank</h3>
+          <div class="mb-3">
+            <label for="fluid" class="form-label">Fluid Input</label>
+            <input type="number" class="form-control" id="fluid" name="fluid" placeholder="ounces">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <div class="dropdown open">
+              <button class="btn btn-primary dropdown-toggle" type="button" 
+                id="description" name="description" data-bs-toggle="dropdown" aria-haspopup="true" 
+                aria-expanded="false">
+                Select an option
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="description">
+                <!-- Dropdown items -->
+                <li><a class="dropdown-item" href="#">Water</a></li>
+                <li><a class="dropdown-item" href="#">Coffee</a></li>
+                <li><a class="dropdown-item" href="#">Soda</a></li>
+                <li><a class="dropdown-item" href="#">Soup</a></li>
+                <li><a class="dropdown-item" href="#">Juice</a></li>
+                <li><a class="dropdown-item" href="#">Wine</a></li>
+                <li><a class="dropdown-item" href="#">Ice</a></li>
+                <li><a class="dropdown-item" href="#">Gelatin</a></li>
+                <li><a class="dropdown-item" href="#">Popsicle</a></li>
+              </ul>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">

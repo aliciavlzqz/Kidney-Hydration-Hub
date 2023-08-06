@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    position: relative;
+    height: 100vh;
+    font-weight: 400;
+}
+
+.left-container {
+    float: left; /* Float the left container to the left */
+    width: 25%; /* Adjust the width as needed */
+    height: 100vh;
+    background: linear-gradient(to right, #0277bd, #00bcd4);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .right-container {
+    float: left; /* Float the right container to the left */
+    width: 75%; /* Adjust the width to occupy the remaining space */
+    height: 100vh;
+    position: relative;
+  }
+
+.header {
+    font-weight: 22px;
+    font-size: 36px;
+
+}
+
+.sub-text {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.week-container {
+    padding-top: 25%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.cal-container{
+    padding-top: 12%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.fs-white {
+    color: #ffffff;
+}
+
+.fs-dark-blue {
+    color: darkblue
+}
+
+.fluid-container {
+    display: inline-block;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 4px #000000;
+}
+
+.daily-amount{
+    font-size: 36px;
+    font-weight: 700
+}
+
+.bottom-border{
+    border-bottom: 1px solid #00446d;
+}
+
+.row {
+    padding: 10px;
+}
+
+.circle-chart {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    /* background: #555; */
+    bottom: 6em; /* Adjust the value to lower the circle-chart */
+}
+
+.outer {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    box-shadow: 6px 10px 1px #0277bd, /* Solid black shadow */
+                inset -2px -2px 6px rgba(255, 255, 255, 0.7); /* Lighter top-left inner shadow */
+    padding: 20px;
+}
+
+
+
+
+.inner {
+   height: 120px;
+   width: 120px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(225,225,225,0.7),
+                inset -0.5px -0.5px 0px  rgba(225,225,225,1),
+                inset -0.5px -0.5px 0px  rgba(0,0,0,0.15),
+                0px 12px 10px 10px rgba(0,0,0,0.05);
+     /* Inner shadow */
+}
+
+#number{
+    font-weight: 600;
+    color: white;
+}
+
+circle{
+    fill: none;
+    stroke: url(#GradientColor);
+    stroke-width: 20px;
+    stroke-dasharray: 472;
+    stroke-dashoffset: 472;
+    animation: anim 2s linear forwards;
+}
+
+svg{
+   position: absolute;
+   top: 0 
+}
+
+@keyframes anim {
+    100%{
+       stroke-dashoffset: 0; 
+    }
+}
+
+
+
+
+/* Additional CSS for responsiveness and circle-chart positioning */
+@media screen and (max-width: 768px) {
+  /* Adjust the circle-chart position for screens with a maximum width of 768px */
+  .circle-chart {
+    bottom: 2em; /* Modify the value as needed for different screen sizes */
+    width: 40px;
+    height: 40px;
+}
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjust the circle-chart position for screens with a maximum width of 480px */
+  .circle-chart {
+    bottom: 2em; /* Modify the value as needed for different screen sizes */
+  }
+}
+  

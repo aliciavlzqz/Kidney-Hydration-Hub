@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-  title: {
+  fluid: {
     type: String,
     required: true,
-  },
-  image: {
-    type: String,
-    require: true,
   },
   cloudinaryId: {
     type: String,
     require: true,
   },
-  caption: {
+  description: {
     type: String,
     required: true,
   },
