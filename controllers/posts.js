@@ -1,5 +1,6 @@
-const cloudinary = require("../middleware/cloudinary");
+
 const Post = require("../models/Post");
+
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -26,34 +27,20 @@ module.exports = {
       console.log(err);
     }
   },
-  createPost: async (req, res) => {
-    try {
-      await Post.create({
-        fluid: req.body.fluid,
-        description: req.body.description,
-        likes: 0,
-        user: req.user.id,
-      });
-      console.log("Post has been added!");
-      res.redirect("/profile");
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  likePost: async (req, res) => {
-    try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // createPost: async (req, res) => {
+  //   try {
+  //     await Post.create({
+  //       liters: req.body.liters,
+  //       description: req.body.description,
+  //       user: req.user.id,
+  //     });
+  //     console.log("Post has been added!");
+  //     res.redirect("/profile");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
+ 
   deletePost: async (req, res) => {
     try {
       // Find post by id
@@ -68,5 +55,30 @@ module.exports = {
       res.redirect("/profile");
     }
   },
-};
 
+  
+  createFluidInput: async (req, res) => {
+    const { liters, fluid, description } = req.body;
+
+    // Validate the data
+    if (!liters || !fluid || !description) {
+      return res.status(400).send("All fields are required.");
+    }
+
+    const newFluid = new Post({
+      liters,
+      fluid,
+      description,
+    });
+
+    try {
+      await newFluid.save();
+      console.log(newFluid);
+      res.redirect("/");
+    } catch (err) {
+      console.error("Error creating fluid input:", err);
+      console.error("Validation errors:", err.errors);
+      res.status(500).send("Error creating fluid input. Please try again.");
+    }
+  }
+};
